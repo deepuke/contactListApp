@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html data-ng-app>
+	<head>
+		<title>Contact List App</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	</head>
+	<body>
+
+		<div class="container" data-ng-controller="AppCtrl">
+			<h1>Contact List App</h1>
+
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Number</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+						<input class="form-control" data-ng-model="contact.name" placeholder="Enter name..">
+						</td>
+						<td>
+						<input class="form-control" data-ng-model="contact.email" placeholder="Enter email..">
+						</td>
+						<td>
+						<input class="form-control" data-ng-model="contact.number" placeholder="Enter number..">
+						</td>
+						<td>
+						<input class="btn btn-primary" type="button" value="Add Contact" data-ng-click="addContact()">
+						<button class="btn btn-info" data-ng-click="updateContact()">
+							Update
+						</button>
+						<button class="btn btn-info" data-ng-click="clearContact()">
+							Clear
+						</button></td>
+					</tr>
+					<tr data-ng-repeat="contact in contactList">
+						<td>{{contact.name}}</td>
+						<td>{{contact.email}}</td>
+						<td>{{contact.number}}</td>
+						<td>
+						<button class="btn btn-danger" data-ng-click="removeContact(contact._id)">
+							Remove
+						</button>
+						<button class="btn btn-warning" data-ng-click="editContact(contact._id)">
+							Edit
+						</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<script src="libs/angularjs/angular.min.js"></script>
+		<script src="controllers/controller.js"></script>
+	</body>
+</html>
